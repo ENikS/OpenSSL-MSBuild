@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright, Microsoft Corporation, All rights reserved.-->
+<ProjectSchemaDefinitions xmlns="http://schemas.microsoft.com/build/2009/properties"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Rule
+        Name="openssl"
+        DisplayName="General"
+        PageTemplate="generic"
+        Description="General"
+        Order="10"
+        >
+    
+    <Rule.Categories>
+      <Category Name="General" DisplayName="General" Description="General" />
+      <Category Name="ProjectDefaults" DisplayName="Project Defaults" Description="Project Defaults" />
+      <Category Name="All Options" DisplayName="All Options" Subtype="Search" />
+      <Category Name="Command Line" DisplayName="Command Line" Subtype="CommandLine" />
+    </Rule.Categories>
+    <Rule.DataSource>
+      <DataSource Persistence="ProjectFile" Label="Configuration" />
+    </Rule.DataSource>
+    <StringProperty Name="OpensslDir" DisplayName="OpenSSL Root Directory"  IncludeInCommandLine="false"
+                    Description="Specifies a relative path to the output file directory; can include environment variables."
+                    Category="General" Default="$(SolutionDir)$(Configuration)\"
+                    Subtype="folder">
+    </StringProperty>
+    <StringProperty Name="OutDir" DisplayName="Output Directory" IncludeInCommandLine="false"
+                    Description="Specifies a relative path to the output file directory; can include environment variables."
+                    Category="General" Default="$(SolutionDir)$(Configuration)\"
+                    Subtype="folder"
+                    F1Keyword="VC.Project.VCConfiguration.OutputDirectory">
+      <StringProperty.DataSource>
+        <DataSource Persistence="ProjectFile" Label="" />
+      </StringProperty.DataSource>
+    </StringProperty>
+    <StringProperty Name="IncDir" DisplayName="Include Directory" IncludeInCommandLine="false"
+                    Description="Specifies a relative path to the output Include directory; can include environment variables."
+                    Category="General" Default="$(OutDir)include"
+                    Subtype="folder"
+                    F1Keyword="VC.Project.VCConfiguration.OutputDirectory">
+      <StringProperty.DataSource>
+        <DataSource Persistence="ProjectFile" Label="" />
+      </StringProperty.DataSource>
+    </StringProperty>
+    <StringProperty Name="IntDir" DisplayName="Intermediate Directory"  IncludeInCommandLine="false"
+                    Description="Specifies a relative path to the intermediate file directory; can include environment variables."
+                    Category="General" Default="$(Configuration)\"
+                    Subtype="folder"
+                    F1Keyword="VC.Project.VCConfiguration.IntermediateDirectory">
+      <StringProperty.DataSource>
+        <DataSource Persistence="ProjectFile" Label="" />
+      </StringProperty.DataSource>
+    </StringProperty>
+    <StringProperty Name="BuildLogFile" DisplayName="Build Log File"  IncludeInCommandLine="false"
+                    Description="Specifies the build log file to write to when build logging is enabled."
+                    F1Keyword="VC.Project.VCConfiguration.BuildLogFile"
+                    Category="General" Default="$(ProjectDir)\$(MSBuildProjectName).log"
+                    Subtype="file">
+      <StringProperty.DataSource>
+        <DataSource Persistence="ProjectFile" ItemType="BuildLog" PersistedName="Path" />
+      </StringProperty.DataSource>
+    </StringProperty>
+    <DynamicEnumProperty Name="PlatformToolset" DisplayName="Platform Toolset" EnumProvider="Toolsets" IncludeInCommandLine="false"
+                         Description="Specifies the toolset used for building the current configuration; If not set, the default toolset is used"
+                         F1Keyword="VC.Project.VCConfiguration.PlatformToolset"
+                         Category="General" />
+    <EnumProperty Name="CharacterSet" DisplayName="Character Set"
+                  Description="Tells the compiler to use the specified character set; aids in localization issues."
+                  Category="General"
+                  F1Keyword="VC.Project.VCConfiguration.CharacterSet">
+      <EnumValue Name="Unicode" DisplayName="Use Unicode Character Set" Description="Use Unicode Character Set" />
+      <EnumValue Name="ANSI" DisplayName="Use ANSI Character Set" Description="Use ANSI Character Set" />
+    </EnumProperty>
+    <EnumProperty Name="BuildType" DisplayName="Configuration Type" IncludeInCommandLine="false"
+                  Description="Specifies the type of output this configuration generates."
+                  Category="ProjectDefaults"
+                  F1Keyword="VC.Project.VCConfiguration.ConfigurationType">
+      <EnumValue Name="DynamicLibrary" DisplayName="Dynamic Library (.dll)" Description="Dynamic Library" />
+      <EnumValue Name="StaticLibrary" DisplayName="Static library (.lib)" Description="Static Library" />
+    </EnumProperty>
+    <BoolProperty Name="Multithreading" DisplayName="Enable Multithreading" IncludeInCommandLine="false"
+                  Description="Create a library that is suitable for multithreaded applications."
+                  Category="ProjectDefaults" />
+    <BoolProperty Name="CryptoHardware" DisplayName="Enable Crypto Hardware"
+                  Description="Compile support for crypto hardware."
+                  ReverseSwitch="no-hw"
+                  Category="ProjectDefaults" />
+    <StringProperty Name="CrossCopmPrefix" DisplayName="Add Prefix"  SwitchPrefix="--" Switch="cross-compile-prefix" Separator="="
+                    Description="Add specified prefix to binutils components."
+                    Category="ProjectDefaults" >
+    </StringProperty>
+    <BoolProperty Name="noDso" DisplayName="Disable Native Shared Methods"
+                  Description="Do not compile in any native shared-library methods. This will ensure that all methods just return NULL."
+                  Switch="no-dso"
+                  Category="ProjectDefaults" />
+    
+    <BoolProperty Name="DoSctp" DisplayName="Include SCTP support"
+                  Description="Include SCTP support."
+                  Switch="sctp"
+                  Category="ProjectDefaults" />
+    <BoolProperty Name="Do80386" DisplayName="Generate 80386 code"
+                  Description="Generate 80386 code."
+                  Switch="386"
+                  Category="ProjectDefaults" />
+    <BoolProperty Name="noSSE2" DisplayName="Disable IA-32 SSE2 code"
+                  Description="Disables IA-32 SSE2 code, option implies no-sse2."
+                  Switch="no-sse2"
+                  Category="ProjectDefaults" />
+
+    
+    <EnumProperty Name="CLRSupport" DisplayName="Common Language Runtime Support" IncludeInCommandLine="false" Visible="false"
+                  Description="Specifies whether this configuration supports the Common Language Runtime. This is incompatible with some other settings, e.g. runtime checks. See help for /clr family of C++ compiler switches for full list of conflicts."
+                  Category="ProjectDefaults"
+                  F1Keyword="VC.Project.VCConfiguration.ManagedExtensions">
+      <EnumValue Name="false" DisplayName="No Common Language Runtime Support"
+                 Description="No Common Language Runtime Support" />
+      <EnumValue Name="true" DisplayName="Common Language Runtime Support (/clr)"
+                 Description="Common Language Runtime Support (/clr)"/>
+      <EnumValue Name="Pure" DisplayName="Pure MSIL Common Language Runtime Support (/clr:pure)"
+                 Description="Pure MSIL Common Language Runtime Support (/clr:pure)" />
+      <EnumValue Name="Safe" DisplayName="Safe MSIL Common Language Runtime Support (/clr:safe)"
+                 Description="Safe MSIL Common Language Runtime Support (/clr:safe)" />
+      <EnumValue Name="OldSyntax" DisplayName="Common Language Runtime Support, Old Syntax (/clr:oldSyntax)"
+                 Description="Common Language Runtime Support, Old Syntax (/clr:oldSyntax)" />
+    </EnumProperty>
+    <BoolProperty Name="WindowsAppContainer" DisplayName="Windows Store App Support" Visible="false" IncludeInCommandLine="false"
+                  Description="Enable this project to support Windows Store apps."
+                  Category="ProjectDefaults" F1Keyword="VC.Project.VCConfiguration.AppSupport"  />
+
+
+    <StringProperty Name="AdditionalOptions" DisplayName="Additional Options" Description="Additional Options." Category="Command Line" F1Keyword="vc.project.AdditionalOptionsPage">
+    </StringProperty>
+    <BoolProperty Name="BuildingInIde" Visible="false">
+    </BoolProperty>
+  </Rule>
+
+  <Rule
+        Name="Options"
+        DisplayName="Options"
+        PageTemplate="tool"
+        Description="openssl options"
+        Order="15"
+        >
+    
+    <Rule.Categories>
+      <Category Name="General" DisplayName="Ciphers" Description="Ciphers" />
+      <Category Name="Krb5" DisplayName="Kerberos 5" Description="Kerberos 5 Defaults" />
+    </Rule.Categories>
+    <Rule.DataSource>
+      <DataSource Persistence="ProjectFile" Label="Configuration" />
+    </Rule.DataSource>
+
+    <BoolProperty Name="cipher-crypto"	  DisplayName="Enable crypto"	  Description="Build with crypto algorithms"	ReverseSwitch="no-crypto"   Category="General" />
+    <BoolProperty Name="cipher-aes"	      DisplayName="Enable aes"	    Description="Build with aes algorithm"	    ReverseSwitch="no-aes"	    Category="General" />
+    <BoolProperty Name="cipher-asn1"	    DisplayName="Enable asn1"	    Description="Build with asn1 algorithm"	    ReverseSwitch="no-asn1"	    Category="General" />
+    <BoolProperty Name="cipher-bf"	      DisplayName="Enable bf"	      Description="Build with bf algorithm"	      ReverseSwitch="no-bf"	      Category="General" />
+    <BoolProperty Name="cipher-bio"	      DisplayName="Enable bio"	    Description="Build with bio algorithm"	    ReverseSwitch="no-bio"	    Category="General" />
+    <BoolProperty Name="cipher-bn"	      DisplayName="Enable bn"	      Description="Build with bn algorithm"	      ReverseSwitch="no-bn"	      Category="General" />
+    <BoolProperty Name="cipher-buffer"	  DisplayName="Enable buffer"	  Description="Build with buffer algorithm"	  ReverseSwitch="no-buffer"	  Category="General" />
+    <BoolProperty Name="cipher-camellia"	DisplayName="Enable camellia"	Description="Build with camellia algorithm"	ReverseSwitch="no-camellia"	Category="General" />
+    <BoolProperty Name="cipher-cast"	    DisplayName="Enable cast"	    Description="Build with cast algorithm"	    ReverseSwitch="no-cast"	    Category="General" />
+    <BoolProperty Name="cipher-cmac"	    DisplayName="Enable cmac"	    Description="Build with cmac algorithm"	    ReverseSwitch="no-cmac"	    Category="General" />
+    <BoolProperty Name="cipher-cms"	      DisplayName="Enable cms"	    Description="Build with cms algorithm"	    ReverseSwitch="no-cms"	    Category="General" />
+    <BoolProperty Name="cipher-comp"	    DisplayName="Enable comp"	    Description="Build with comp algorithm"	    ReverseSwitch="no-comp"	    Category="General" />
+    <BoolProperty Name="cipher-conf"	    DisplayName="Enable conf"	    Description="Build with conf algorithm"	    ReverseSwitch="no-conf"	    Category="General" />
+    <BoolProperty Name="cipher-des"	      DisplayName="Enable des"	    Description="Build with des algorithm"	    ReverseSwitch="no-des"	    Category="General" />
+    <BoolProperty Name="cipher-dh"	      DisplayName="Enable dh"	      Description="Build with dh algorithm"	      ReverseSwitch="no-dh"	      Category="General" />
+    <BoolProperty Name="cipher-dsa"	      DisplayName="Enable dsa"	    Description="Build with dsa algorithm"	    ReverseSwitch="no-dsa"	    Category="General" />
+    <BoolProperty Name="cipher-dso"	      DisplayName="Enable dso"	    Description="Build with dso algorithm"	    ReverseSwitch="no-dso"	    Category="General" />
+    <BoolProperty Name="cipher-ec"	      DisplayName="Enable ec"	      Description="Build with ec algorithm"	      ReverseSwitch="no-ec"	      Category="General" />
+    <BoolProperty Name="cipher-ecdh"	    DisplayName="Enable ecdh"	    Description="Build with ecdh algorithm"	    ReverseSwitch="no-ecdh"	    Category="General" />
+    <BoolProperty Name="cipher-ecdsa"	    DisplayName="Enable ecdsa"	  Description="Build with ecdsa algorithm"	  ReverseSwitch="no-ecdsa"	  Category="General" />
+    <BoolProperty Name="cipher-engine"	  DisplayName="Enable engine"	  Description="Build with engine algorithm"	  ReverseSwitch="no-engine"	  Category="General" />
+    <BoolProperty Name="cipher-err"	      DisplayName="Enable err"	    Description="Build with err algorithm"	    ReverseSwitch="no-err"	    Category="General" />
+    <BoolProperty Name="cipher-evp"	      DisplayName="Enable evp"	    Description="Build with evp algorithm"	    ReverseSwitch="no-evp"	    Category="General" />
+    <BoolProperty Name="cipher-hmac"	    DisplayName="Enable hmac"	    Description="Build with hmac algorithm"	    ReverseSwitch="no-hmac"	    Category="General" />
+    <BoolProperty Name="cipher-idea"	    DisplayName="Enable idea"	    Description="Build with idea algorithm"	    ReverseSwitch="no-idea"	    Category="General" />
+    <BoolProperty Name="cipher-jpake"	    DisplayName="Enable jpake"	  Description="Build with jpake algorithm"	  ReverseSwitch="no-jpake"	  Category="General" />
+    <BoolProperty Name="cipher-krb5"	    DisplayName="Enable krb5"	    Description="Build with krb5 algorithm"	    ReverseSwitch="no-krb5"	    Category="General" />
+    <BoolProperty Name="cipher-lhash"	    DisplayName="Enable lhash"	  Description="Build with lhash algorithm"	  ReverseSwitch="no-lhash"	  Category="General" />
+    <BoolProperty Name="cipher-md2"	      DisplayName="Enable md2"	    Description="Build with md2 algorithm"	    ReverseSwitch="no-md2"	    Category="General" />
+    <BoolProperty Name="cipher-md4"	      DisplayName="Enable md4"	    Description="Build with md4 algorithm"	    ReverseSwitch="no-md4"	    Category="General" />
+    <BoolProperty Name="cipher-md5"	      DisplayName="Enable md5"	    Description="Build with md5 algorithm"	    ReverseSwitch="no-md5"	    Category="General" />
+    <BoolProperty Name="cipher-mdc2"	    DisplayName="Enable mdc2"	    Description="Build with mdc2 algorithm"	    ReverseSwitch="no-mdc2"	    Category="General" />
+    <BoolProperty Name="cipher-modes"	    DisplayName="Enable modes"	  Description="Build with modes algorithm"	  ReverseSwitch="no-modes"	  Category="General" />
+    <BoolProperty Name="cipher-objects"	  DisplayName="Enable objects"	Description="Build with objects algorithm"	ReverseSwitch="no-objects"	Category="General" />
+    <BoolProperty Name="cipher-ocsp"	    DisplayName="Enable ocsp"	    Description="Build with ocsp algorithm"	    ReverseSwitch="no-ocsp"	    Category="General" />
+    <BoolProperty Name="cipher-pem"	      DisplayName="Enable pem"	    Description="Build with pem algorithm"	    ReverseSwitch="no-pem"	    Category="General" />
+    <BoolProperty Name="cipher-perlasm"	  DisplayName="Enable perlasm"	Description="Build with perlasm algorithm"	ReverseSwitch="no-perlasm"	Category="General" />
+    <BoolProperty Name="cipher-pkcs12"	  DisplayName="Enable pkcs12"	  Description="Build with pkcs12 algorithm"	  ReverseSwitch="no-pkcs12"	  Category="General" />
+    <BoolProperty Name="cipher-pkcs7"	    DisplayName="Enable pkcs7"	  Description="Build with pkcs7 algorithm"	  ReverseSwitch="no-pkcs7"	  Category="General" />
+    <BoolProperty Name="cipher-pqueue"	  DisplayName="Enable pqueue"	  Description="Build with pqueue algorithm"	  ReverseSwitch="no-pqueue"	  Category="General" />
+    <BoolProperty Name="cipher-rand"	    DisplayName="Enable rand"	    Description="Build with rand algorithm"	    ReverseSwitch="no-rand"	    Category="General" />
+    <BoolProperty Name="cipher-rc2"	      DisplayName="Enable rc2"	    Description="Build with rc2 algorithm"	    ReverseSwitch="no-rc2"	    Category="General" />
+    <BoolProperty Name="cipher-rc4"	      DisplayName="Enable rc4"	    Description="Build with rc4 algorithm"	    ReverseSwitch="no-rc4"	    Category="General" />
+    <BoolProperty Name="cipher-rc5"	      DisplayName="Enable rc5"	    Description="Build with rc5 algorithm"	    ReverseSwitch="no-rc5"	    Category="General" />
+    <BoolProperty Name="cipher-ripemd"	  DisplayName="Enable ripemd"	  Description="Build with ripemd algorithm"	  ReverseSwitch="no-ripemd"	  Category="General" />
+    <BoolProperty Name="cipher-rsa"	      DisplayName="Enable rsa"	    Description="Build with rsa algorithm"	    ReverseSwitch="no-rsa"	    Category="General" />
+    <BoolProperty Name="cipher-seed"	    DisplayName="Enable seed"	    Description="Build with seed algorithm"	    ReverseSwitch="no-seed"	    Category="General" />
+    <BoolProperty Name="cipher-sha"	      DisplayName="Enable sha"	    Description="Build with sha algorithm"	    ReverseSwitch="no-sha"	    Category="General" />
+    <BoolProperty Name="cipher-srp"	      DisplayName="Enable srp"	    Description="Build with srp algorithm"	    ReverseSwitch="no-srp"	    Category="General" />
+    <BoolProperty Name="cipher-stack"	    DisplayName="Enable stack"	  Description="Build with stack algorithm"	  ReverseSwitch="no-stack"	  Category="General" />
+    <BoolProperty Name="cipher-store"	    DisplayName="Enable store"	  Description="Build with store algorithm"	  ReverseSwitch="no-store"	  Category="General" />
+    <BoolProperty Name="cipher-threads"	  DisplayName="Enable threads"	Description="Build with threads algorithm"	ReverseSwitch="no-threads"	Category="General" />
+    <BoolProperty Name="cipher-ts"	      DisplayName="Enable ts"	      Description="Build with ts algorithm"	      ReverseSwitch="no-ts"	      Category="General" />
+    <BoolProperty Name="cipher-txt_db"	  DisplayName="Enable txt_db"	  Description="Build with txt_db algorithm"	  ReverseSwitch="no-txt_db"	  Category="General" />
+    <BoolProperty Name="cipher-ui"	      DisplayName="Enable ui"	      Description="Build with ui algorithm"	      ReverseSwitch="no-ui"	      Category="General" />
+    <BoolProperty Name="cipher-whrlpool"	DisplayName="Enable whrlpool"	Description="Build with whrlpool algorithm"	ReverseSwitch="no-whrlpool"	Category="General" />
+    <BoolProperty Name="cipher-x509"	    DisplayName="Enable x509"	    Description="Build with x509 algorithm"	    ReverseSwitch="no-x509"	    Category="General" />
+    <BoolProperty Name="cipher-x509v3"	  DisplayName="Enable x509v3"	  Description="Build with x509v3 algorithm"	  ReverseSwitch="no-x509v3"	  Category="General" />
+
+    <BoolProperty Name="nokrb5" DisplayName="Enable Kerberos 5"      Description="Compile in support for Kerberos 5." ReverseSwitch="no-krb5" Category="Krb5" />
+    <StringProperty Name="Krb5Dir" DisplayName="Kerberos 5 Directory" SwitchPrefix="--" Switch="with-krb5-dir" Separator="="
+                    Description="Specifies a relative path to the Kerberos 5 directory. The libraries are expected to live in the subdirectory lib/ and the header files in include/."
+                    Category="Krb5" Subtype="folder">
+    </StringProperty>
+    <StringProperty Name="Krb5Headers" DisplayName="Kerberos 5 Header Files" SwitchPrefix="--" Switch="with-krb5-include" Separator="="
+                    Description="Specifies a relative path to the Kerberos 5 Header Files directory; can include environment variables."
+                    Category="Krb5" Subtype="folder">
+    </StringProperty>
+    <StringProperty Name="Krb5Libs" DisplayName="Kerberos 5 Libraries" SwitchPrefix="--" Switch="with-krb5-lib" Separator="="
+                    Description="Specifies a relative path to the Kerberos 5 libraries directory; can include environment variables."
+                    Category="Krb5" Subtype="folder">
+    </StringProperty>
+    <EnumProperty Name="krb5-flavor" DisplayName="Kerberos 5 flavor"  Description="Declare what flavor of Kerberos 5 is used." Category="Krb5">
+      <EnumValue Name="mit"     DisplayName="MIT"     Switch="--with-krb5-flavor=MIT" Description="MIT Flawor" />
+      <EnumValue Name="Heimdal" DisplayName="Heimdal" Switch="--with-krb5-flavor=Heimdal" Description="Heimdal Flawor" />
+    </EnumProperty>
+
+    <BoolProperty Name="BuildingInIde" Visible="false">
+    </BoolProperty>
+  </Rule>
+
+</ProjectSchemaDefinitions>
