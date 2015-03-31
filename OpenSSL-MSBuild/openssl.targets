@@ -19,7 +19,6 @@ Copyright Eugene Sadovoi (C)
     <BuildDir>$([System.IO.Path]::GetFullPath('$([System.IO.Path]::Combine("$(MSBuildProjectDirectory)", "$(IntDir)"))').TrimEnd($([System.IO.Path]::DirectorySeparatorChar)))</BuildDir>
     <RootDir>$([System.IO.Path]::GetFullPath('$([System.IO.Path]::Combine("$(MSBuildProjectDirectory)", "$(OpensslDir)"))').TrimEnd($([System.IO.Path]::DirectorySeparatorChar)))</RootDir>
     <IncRootDir Condition="'$(IncDir)'!=''">$([System.IO.Path]::GetFullPath('$([System.IO.Path]::Combine("$(MSBuildProjectDirectory)", "$(IncDir)\.."))').TrimEnd($([System.IO.Path]::DirectorySeparatorChar)))</IncRootDir>
-    <Temp>$(OutDir)</Temp>
     <Perl>Perl</Perl>
   </PropertyGroup>
 
@@ -248,7 +247,6 @@ Copyright Eugene Sadovoi (C)
   <Target Name="Test" >
     <CallTarget Targets="Rebuild" Condition="!Exists('$(OutputDir)\openssl.exe')" />
 
-    <Message Importance="high" Text="OutputDir: $(OutputDir)" />
     
     <Exec Command="call &#34;$(VCInstallDir)vcvarsall.bat&#34; $(PlatformTarget)
              SET Path=$(OutputDir);%Path%
