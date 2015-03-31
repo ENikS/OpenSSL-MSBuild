@@ -1,0 +1,12 @@
+*.sdf
+*.user
+*.tmp
+*.obj
+
+Debug
+Release
+x64
+x86
+lib
+bin
+obj
