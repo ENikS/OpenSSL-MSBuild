@@ -239,7 +239,19 @@ Copyright Eugene Sadovoi (C)
     <RemoveDir Directories="@(CleanDirs)" ContinueOnError="true" />
   </Target>
 
-  
+
+  <!--
+  ///////////////////////////////////////////////////////////
+  // Test Target
+  ///////////////////////////////////////////////////////////-->
+  <Target Name="Test" >
+    <CallTarget Targets="Rebuild" Condition="!Exists('$(OutputDir)\openssl.exe')" />
+    <Exec Command="call &#34;$(VCInstallDir)vcvarsall.bat&#34; $(PlatformTarget)
+             SET Path=$(OutputDir);%Path%
+             call test.bat"   WorkingDirectory="$(RootDir)\ms" />
+  </Target>
+
+
   <!--
   ///////////////////////////////////////////////////////////
   // Returns list of dlls
