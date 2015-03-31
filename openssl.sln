@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openssl", "openssl-MSBuild\openssl.vcxproj", "{7BB79F54-BA21-41C9-B4DA-7555FE78E609}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CECBCF18-44A4-4B18-A7A1-AFF1218C399F}"
+	ProjectSection(SolutionItems) = preProject
+		openssl-MSBuild\cflags.xml = openssl-MSBuild\cflags.xml
+		openssl-MSBuild\ConfGen.targets = openssl-MSBuild\ConfGen.targets
+		openssl-MSBuild\openssl.targets = openssl-MSBuild\openssl.targets
+		openssl-MSBuild\openssl.xml = openssl-MSBuild\openssl.xml
+		openssl-MSBuild\perlfix.targets = openssl-MSBuild\perlfix.targets
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "zlib\contrib\vstudio\vc12\zlib.vcxproj", "{8FD826F8-3739-44E6-8CC8-997122E53B8D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestApp", "TestApp\TestApp.vcxproj", "{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Debug|Win32.Build.0 = Debug|Win32
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Debug|x64.ActiveCfg = Debug|x64
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Debug|x64.Build.0 = Debug|x64
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Release|Win32.ActiveCfg = Release|Win32
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Release|Win32.Build.0 = Release|Win32
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Release|x64.ActiveCfg = Release|x64
+		{7BB79F54-BA21-41C9-B4DA-7555FE78E609}.Release|x64.Build.0 = Release|x64
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Debug|Win32.Build.0 = Debug|Win32
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Debug|x64.ActiveCfg = Debug|x64
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Debug|x64.Build.0 = Debug|x64
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Release|Win32.ActiveCfg = Release|Win32
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Release|Win32.Build.0 = Release|Win32
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Release|x64.ActiveCfg = Release|x64
+		{8FD826F8-3739-44E6-8CC8-997122E53B8D}.Release|x64.Build.0 = Release|x64
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Debug|Win32.Build.0 = Debug|Win32
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Debug|x64.ActiveCfg = Debug|x64
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Debug|x64.Build.0 = Debug|x64
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Release|Win32.ActiveCfg = Release|Win32
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Release|Win32.Build.0 = Release|Win32
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Release|x64.ActiveCfg = Release|x64
+		{B3A6DB32-7D2F-496F-863F-E6E6D1AEF09B}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
