@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22609.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openssl", "openssl-MSBuild\openssl.vcxproj", "{7BB79F54-BA21-41C9-B4DA-7555FE78E609}"
 EndProject
@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		openssl-MSBuild\ConfGen.targets = openssl-MSBuild\ConfGen.targets
 		openssl-MSBuild\openssl.targets = openssl-MSBuild\openssl.targets
 		openssl-MSBuild\openssl.xml = openssl-MSBuild\openssl.xml
-		openssl-MSBuild\perlfix.targets = openssl-MSBuild\perlfix.targets
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "zlib.vcxproj", "{8FD826F8-3739-44E6-8CC8-997122E53B8D}"
