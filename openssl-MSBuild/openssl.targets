@@ -332,7 +332,7 @@ Copyright Eugene Sadovoi (C)
       <Output ItemName="DLLFiles" TaskParameter="CombinedPaths"/>
     </CombinePath>
   </Target>
-    
+
 
   <!--
   ///////////////////////////////////////////////////////////
@@ -348,6 +348,7 @@ Copyright Eugene Sadovoi (C)
     <PropertyPageSchema Include="lflags.xml" Condition="Exists('lflags.xml')">
       <Context>Project</Context>
     </PropertyPageSchema>
+    <PropertyPageSchema Include="debugger.xml" Condition="Exists('debugger.xml')"/>
   </ItemGroup>
 
 </Project>

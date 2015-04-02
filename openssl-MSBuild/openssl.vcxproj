@@ -31,6 +31,7 @@
     <UseDefaultProjectTools Label="Import Settings">false</UseDefaultProjectTools>
     <UseDefaultPropertyPageSchemas Label="Import Settings">false</UseDefaultPropertyPageSchemas>
     <UseDefaultGeneralPropertyPageSchema Label="Import Settings">false</UseDefaultGeneralPropertyPageSchema>
+    <LocalDebuggerCommand>openssl.exe</LocalDebuggerCommand>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -81,15 +82,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncDir>$(SolutionDir)$(Configuration)\Include\</IncDir>
+    <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncDir>$(SolutionDir)$(Configuration)\Include\</IncDir>
+    <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncDir>$(SolutionDir)$(Platform)\$(Configuration)\Include\</IncDir>
+    <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncDir>$(SolutionDir)$(Platform)\$(Configuration)\Include\</IncDir>
+    <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Label="CFlags" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DisableSpecificWarnings>4267;4101;4244</DisableSpecificWarnings>
